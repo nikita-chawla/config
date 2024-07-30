@@ -1,12 +1,12 @@
 application:
   name: dashboard-service
   services:
-    users:
+    service1:
       name: users-service
       url: http://localhost:8081/users/count
-    products:
+    service2:
       name: products-service
       url: http://localhost:8082/products/count
-    orders:
+    service3:
       name: orders-service
       url: http://localhost:8083/orders/count
