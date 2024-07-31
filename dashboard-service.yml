@@ -4,9 +4,12 @@ application:
     service1:
       name: users-service
       url: http://localhost:8081/users/count
+      healthurl: http://localhost:8081/actuator/health
     service2:
       name: products-service
       url: http://localhost:8082/products/count
+      healthurl: http://localhost:8082/actuator/health
     service3:
       name: orders-service
       url: http://localhost:8083/orders/count
+      healthurl: http://localhost:8083/actuator/health
