@@ -7,12 +7,12 @@ application:
       counturimethod: POST
       healthurl: http://localhost:8081/actuator/health
     service2:
-      name: products-service
-      counturi: /users
+      name: orders-service
+      counturi: /orders
       counturimethod: POST
       healthurl: http://localhost:8082/actuator/health
     service3:
-      name: orders-service
-      counturi: /users
+      name: product-service
+      counturi: /products
       counturimethod: POST
       healthurl: http://localhost:8083/actuator/health
