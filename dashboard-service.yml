@@ -43,3 +43,207 @@ application:
           }
         }
       }
+  - id: 3
+    question: "How many times has the /actuator/health endpoint been accessed in orderservice?"
+    query: |
+      {
+        "query": {
+          "bool": {
+            "must": [
+              { "match": { "message": "/actuator/health" }},
+               { "match": { "tags": "orderservice" } }
+            ]
+          }
+        },
+        "aggs": {
+          "access_count": {
+            "value_count": { "field": "message" }
+          }
+        }
+      }
+  - id: 4
+    question: "How many times has the product 6 been ordered?"
+    query: |
+      {
+        "size": 10,
+        "query": {
+          "bool": {
+            "must": [
+              { "match": { "tags": "orderservice" } },
+              { "match": { "message": "requestURI: /orders, httpMethod: POST, Response Status: 200 \"productId\":6" } }
+            ]
+          }
+        },
+        "aggs": {
+          "order_count": {
+            "value_count": {
+              "field": "message"
+            }
+          }
+        }
+      }
+  - id: 5
+    question: "How many times has a user with userId = 'X' been accessed in the userservice?"
+    query: |
+      {
+        "size": 10,
+        "query": {
+          "bool": {
+            "must": [
+              { "match": { "tags": "userservice" } },
+              { "match": { "message": "/users/1" } }
+            ]
+          }
+        },
+        "aggs": {
+          "order_count": {
+            "value_count": {
+              "field": "message"
+            }
+          }
+        }
+      }
+  - id: 6
+    question: "What is the success rate (2xx responses) of CRUD operations in orderservice?"
+    query: |
+      {
+        "size": 10,
+        "query": {
+          "bool": {
+            "must": [
+              { "match": { "tags": "orderservice" } },
+              { "match": { "message": "Response Status: 2" } }
+            ]
+          }
+        }
+      }
+  - id: 7
+    question: "How many success attempts to create product have occurred?"
+    query: |
+      {
+        "query": {
+          "bool": {
+            "must": [
+              { "match": { "tags": "productservice" } },
+              { "match_phrase": { "message": "requestURI: /product httpMethod: POST Response Status: 200" } }
+            ]
+          }
+        }
+      }
+  - id: 8
+    question: "How many failed attempts to create product have occurred?"
+    query: |
+      {
+        "query": {
+          "bool": {
+            "must": [
+              { "match": { "tags": "productservice" } },
+              { "match_phrase": { "message": "requestURI: /product httpMethod: POST Response Status: 400" } }
+            ]
+          }
+        }
+      }
+  - id: 9
+    question: "How many times has the /actuator/health endpoint been accessed in productservice?"
+    query: |
+      {
+        "query": {
+          "bool": {
+            "must": [
+              { "match": { "message": "/actuator/health" }},
+               { "match": { "tags": "productservice" } }
+            ]
+          }
+        },
+        "aggs": {
+          "access_count": {
+            "value_count": { "field": "message" }
+          }
+        }
+      }
+  - id: 10
+    question: "What is the success rate (2xx responses) of CRUD operations in productservice?"
+    query: |
+      {
+        "size": 10,
+        "query": {
+          "bool": {
+            "must": [
+              { "match": { "tags": "productservice" } },
+              { "match": { "message": "Response Status: 2" } }
+            ]
+          }
+        }
+      }
+  - id: 11
+    question: "What is the failure rate (4xx responses) of CRUD operations in productservice?"
+    query: |
+      {
+        "size": 10,
+        "query": {
+          "bool": {
+            "must": [
+              { "match": { "tags": "productservice" } },
+              { "match": { "message": "Response Status: 4" } }
+            ]
+          }
+        }
+      }
+  - id: 12
+    question: "How many success attempts to create users have occurred?"
+    query: |
+      {
+        "query": {
+          "bool": {
+            "must": [
+              { "match": { "tags": "userservice" } },
+              { "match_phrase": { "message": "requestURI: /users httpMethod: POST Response Status: 200" } }
+            ]
+          }
+        }
+      }
+  - id: 13
+    question: "How many failed attempts to create users have occurred?"
+    query: |
+      {
+        "query": {
+          "bool": {
+            "must": [
+              { "match": { "tags": "userservice" } },
+              { "match_phrase": { "message": "requestURI: /users httpMethod: POST Response Status: 400" } }
+            ]
+          }
+        }
+      }
+  - id: 14
+    question: "How many times has the /actuator/health endpoint been accessed in userservice?"
+    query: |
+      {
+        "query": {
+          "bool": {
+            "must": [
+              { "match": { "message": "/actuator/health" }},
+               { "match": { "tags": "userservice" } }
+            ]
+          }
+        },
+        "aggs": {
+          "access_count": {
+            "value_count": { "field": "message" }
+          }
+        }
+      }
+  - id: 15
+    question: "What is the success rate (2xx responses) of CRUD operations in userservice?"
+    query: |
+      {
+        "size": 10,
+        "query": {
+          "bool": {
+            "must": [
+              { "match": { "tags": "userservice" } },
+              { "match": { "message": "Response Status: 2" } }
+            ]
+          }
+        }
+      }
