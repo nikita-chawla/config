@@ -2,17 +2,17 @@ application:
   name: dashboard-service
   services:
     service1:
-      name: payment-service
+      name: User-service
       counturi: /users
       counturimethod: POST
       healthurl: http://localhost:8081/actuator/health
     service2:
-      name: insurance-service
+      name: Order-service
       counturi: /orders
       counturimethod: POST
       healthurl: http://localhost:8082/actuator/health
     service3:
-      name: people-service
+      name: Product-service
       counturi: /products
       counturimethod: POST
       healthurl: http://localhost:8083/actuator/health
