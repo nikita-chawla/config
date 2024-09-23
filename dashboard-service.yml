@@ -5,16 +5,19 @@ application:
       name: User-service
       counturi: /users
       counturimethod: POST
+      countmessage: "users registered successfully"
       healthurl: http://localhost:8081/actuator/health
     service2:
       name: Order-service
       counturi: /orders
       counturimethod: POST
+      countmessage: "orders created successfully"
       healthurl: http://localhost:8082/actuator/health
     service3:
       name: Product-service
       counturi: /products
       counturimethod: POST
+      countmessage: "products created successfully"
       healthurl: http://localhost:8083/actuator/health
   questions:
   - id: 1
