@@ -91,9 +91,9 @@ application:
               - match:
                   tags: orderservice
               - match:
-                  message: Response Status: 2
+                  message: "Response Status: 2"
     - id: 7
-      question: How many success attempts to create product have occurred?
+      question: How many success attempts to create products have occurred?
       query:
         query:
           bool:
@@ -103,7 +103,7 @@ application:
               - match_phrase:
                   message: "requestURI: /product httpMethod: POST Response Status: 200"
     - id: 8
-      question: How many failed attempts to create product have occurred?
+      question: How many failed attempts to create products have occurred?
       query:
         query:
           bool:
@@ -136,7 +136,7 @@ application:
               - match:
                   tags: productservice
               - match:
-                  message: Response Status: 2
+                  message: "Response Status: 2"
     - id: 11
       question: What is the failure rate (4xx responses) of CRUD operations in productservice?
       query:
@@ -147,7 +147,7 @@ application:
               - match:
                   tags: productservice
               - match:
-                  message: Response Status: 4
+                  message: "Response Status: 4"
     - id: 12
       question: How many success attempts to create users have occurred?
       query:
@@ -192,4 +192,4 @@ application:
               - match:
                   tags: userservice
               - match:
-                  message: Response Status: 2
+                  message: "Response Status: 2"
