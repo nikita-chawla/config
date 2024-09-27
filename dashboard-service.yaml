@@ -1,7 +1,7 @@
 application:
   name: dashboard-service
   services:
-    - name: falana-service
+    - name: user-service
       counturi: /users
       counturimethod: POST
       countmessage: users registered successfully
